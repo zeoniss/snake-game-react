@@ -3,14 +3,14 @@ import { useEffect, useRef } from "react"
 function useInterval(callback: () => void, delay: number | null) {
   const savedCallback = useRef(callback)
 
-  // Remember the latest callback if it changes.
+  //Запам’ятайє останній зворотний виклик, якщо він змінився
   useEffect(() => {
     savedCallback.current = callback
   }, [callback])
 
-  // Set up the interval.
+  //Налаштовує інтервал.
   useEffect(() => {
-    // Don't schedule if no delay is specified.
+    // Не планує, якщо не вказано затримку.
     if (delay === null) {
       return
     }
